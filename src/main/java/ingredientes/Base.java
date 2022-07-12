@@ -2,13 +2,20 @@ package ingredientes;
 
 public class Base implements Ingrediente,Comparable<Ingrediente>{
 
+    /** ATRIBUTOS */
     private TipoBase tipoBase;
 
+    /** MÉTODOS */
     public Base(TipoBase tipoBase) {
         this.tipoBase = tipoBase;
     }
 
     public TipoBase getTipoBase(){
+        return this.tipoBase;
+    }
+
+    @Override
+    public Enum obterTipo() {
         return this.tipoBase;
     }
 
@@ -22,16 +29,15 @@ public class Base implements Ingrediente,Comparable<Ingrediente>{
         return tipoBase == base.tipoBase;
     }
 
+    @Override
+    public int hashCode() {
+        return tipoBase.hashCode();
+    }
 
     //É necessário consertar o compareTo, para imprimir na ordem correta.
     @Override
     public int compareTo(Ingrediente ingrediente) {
-        return ingrediente.obterTipo().toString().compareToIgnoreCase(this.obterTipo().toString());
-    }
-
-    @Override
-    public int hashCode() {
-        return tipoBase.hashCode();
+        return ingrediente.obterTipo().toString().compareTo(this.obterTipo().toString());
     }
 
     @Override
@@ -39,8 +45,5 @@ public class Base implements Ingrediente,Comparable<Ingrediente>{
         return this.tipoBase.toString();
     }
 
-    @Override
-    public Enum obterTipo() {
-        return this.tipoBase;
-    }
+
 }

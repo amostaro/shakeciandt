@@ -3,10 +3,13 @@ package pedido;
 import java.io.*;
 
 public class Cliente implements Serializable {
+
+    /** ATRIBUTOS */
     private int id;
     private String nome;
     private String email;
 
+    /** MÉTODOS */
     public Cliente(int id, String nome, String email) {
         this.id = id;
         this.nome = nome;

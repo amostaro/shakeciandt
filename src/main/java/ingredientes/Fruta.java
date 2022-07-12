@@ -1,8 +1,11 @@
 package ingredientes;
 
 public class Fruta  implements Adicional,Comparable<Ingrediente>{
+
+     /** ATRIBUTOS */
      private TipoFruta tipoFruta;
 
+     /** MÉTODOS */
      public Fruta(TipoFruta tipoFruta) {
           this.tipoFruta = tipoFruta;
      }
@@ -11,11 +14,9 @@ public class Fruta  implements Adicional,Comparable<Ingrediente>{
           return this.tipoFruta;
      }
 
-
-     //É necessário consertar o compareTo, para imprimir na ordem correta.
      @Override
-     public int compareTo(Ingrediente ingrediente) {
-          return ingrediente.obterTipo().toString().compareTo(this.obterTipo().toString());
+     public Enum obterTipo() {
+          return this.tipoFruta;
      }
 
      @Override
@@ -33,14 +34,17 @@ public class Fruta  implements Adicional,Comparable<Ingrediente>{
           return tipoFruta.hashCode();
      }
 
+     //É necessário consertar o compareTo, para imprimir na ordem correta.
+     @Override
+     public int compareTo(Ingrediente ingrediente) {
+          return ingrediente.obterTipo().toString().compareTo(this.obterTipo().toString());
+     }
+
      @Override
      public String toString() {
           return this.tipoFruta.toString();
      }
 
-     @Override
-     public Enum obterTipo() {
-          return this.tipoFruta;
-     }
+
 
 }

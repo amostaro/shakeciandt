@@ -5,8 +5,11 @@ import ingredientes.Ingrediente;
 import java.util.TreeMap;
 
 public class Cardapio {
+
+    /** ATRIBUTOS */
     private TreeMap<Ingrediente,Double> precos;
 
+    /** MÉTODOS */
     public Cardapio(){
         this.precos= new TreeMap<>();
     }

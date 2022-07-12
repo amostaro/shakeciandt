@@ -4,14 +4,16 @@ import java.util.ArrayList;
 
 public class Pedido{
 
+    /** ATRIBUTOS */
     private int id;
     private  ArrayList<ItemPedido> itens;
     private Cliente cliente;
 
+    /** MÉTODOS */
     public Pedido(int id, ArrayList<ItemPedido> itens,Cliente cliente){
         this.id = id;
-        this.itens=itens;
-        this.cliente=cliente;
+        this.itens = itens;
+        this.cliente = cliente;
     }
 
     public ArrayList<ItemPedido> getItens() {

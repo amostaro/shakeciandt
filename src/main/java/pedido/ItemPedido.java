@@ -3,9 +3,11 @@ package pedido;
 import produto.Shake;
 
 public class ItemPedido {
+    /** ATRIBUTOS */
     private Shake shake;
     private int quantidade;
 
+    /** MÉTODOS */
     public ItemPedido(Shake shake, int quantidade) {
         this.shake = shake;
         this.quantidade = quantidade;
