@@ -1,9 +1,12 @@
 package produto;
 
-import ingredientes.*;
+import ingredientes.Adicional;
+import ingredientes.Base;
+import ingredientes.Fruta;
+import ingredientes.Topping;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Shake {
 
@@ -48,6 +51,20 @@ public class Shake {
 
     public TipoTamanho getTipoTamanho() {
         return tipoTamanho;
+    }
+
+    // adição equals and hashcode - REGRA 1
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Shake shake = (Shake) o;
+        return Objects.equals(base, shake.base) && Objects.equals(fruta, shake.fruta) && Objects.equals(topping, shake.topping) && Objects.equals(adicionais, shake.adicionais) && tipoTamanho == shake.tipoTamanho;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(base, fruta, topping, adicionais, tipoTamanho);
     }
 
     @Override
