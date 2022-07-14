@@ -53,7 +53,6 @@ public class Shake {
         return tipoTamanho;
     }
 
-    // adição equals and hashcode - REGRA 1
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
