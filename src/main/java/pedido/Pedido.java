@@ -43,31 +43,31 @@ public class Pedido{
             if (itemPedido.getShake().getTipoTamanho().equals(TipoTamanho.P)) {
                 double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.P.multiplicador);
                 if (itemPedido.getShake().getAdicionais().isEmpty()) {
-                    total = base;
+                    total = base * itemPedido.getQuantidade();
                 } else {
                     for ( Adicional adicional : itemPedido.getShake().getAdicionais()) {
                         double valorAdicional = cardapio.buscarPreco(adicional);
-                        total = base + valorAdicional;
+                        total = (base + valorAdicional)* itemPedido.getQuantidade();
                     }
                 }
             } else if (itemPedido.getShake().getTipoTamanho().equals(TipoTamanho.M)) {
                 double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.M.multiplicador);
                 if (itemPedido.getShake().getAdicionais().isEmpty()) {
-                    total = base;
+                    total = base * itemPedido.getQuantidade();
                 } else {
                     for ( Adicional adicional : itemPedido.getShake().getAdicionais()) {
                         double valorAdicional = cardapio.buscarPreco(adicional);
-                        total = base + valorAdicional;
+                        total = (base + valorAdicional)* itemPedido.getQuantidade();
                     }
                 }
             } else {
                 double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.G.multiplicador);
                 if (itemPedido.getShake().getAdicionais().isEmpty()) {
-                    total = base;
+                    total = base * itemPedido.getQuantidade();
                 } else {
                     for ( Adicional adicional : itemPedido.getShake().getAdicionais()) {
                         double valorAdicional = cardapio.buscarPreco(adicional);
-                        total = base + valorAdicional;
+                        total = (base + valorAdicional)* itemPedido.getQuantidade();
                     }
                 }
             }
