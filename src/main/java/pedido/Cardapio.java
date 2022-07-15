@@ -18,23 +18,28 @@ public class Cardapio {
         return this.precos;
     }
 
-    public void adicionarIngrediente(Ingrediente ingrediente,Double preco){
+    public void adicionarIngrediente(Ingrediente ingrediente,Double preco) throws Exception {
         //TODO
+        precos.put(ingrediente, preco);
     }
 
-    public boolean atualizarIngrediente(Ingrediente ingrediente,Double preco){
+    public boolean atualizarIngrediente(Ingrediente ingrediente,Double preco) throws Exception {
        //TODO
-        return true;
+        return precos.replace(ingrediente, buscarPreco(ingrediente), preco);
     }
 
-    public boolean removerIngrediente(Ingrediente ingrediente){
+    public boolean removerIngrediente(Ingrediente ingrediente) throws Exception {
        //TODO
-        return true;
+        return precos.remove(ingrediente, buscarPreco(ingrediente));
     }
 
-    public Double buscarPreco(Ingrediente ingrediente){
+    public Double buscarPreco(Ingrediente ingrediente) throws Exception {
         //TODO
-        return 0.0;
+        Double preco = precos.get(ingrediente);
+        if (preco != null) {
+            return preco;
+        }
+        throw new Exception("Preço deve ser diferente de nulo.");
     }
 
     @Override

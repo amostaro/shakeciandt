@@ -36,16 +36,37 @@ public class Pedido{
 
     public void adicionarItemPedido(ItemPedido itemPedidoAdicionado){
         //TODO
+        //precisa index pq ItemPedido é ArrayList
+        int indexItem = itens.indexOf(itemPedidoAdicionado);
+
+        if (indexItem < 0) {
+            itens.add(itemPedidoAdicionado);
+        } else {
+            ItemPedido itemExistente = itens.get(indexItem);
+            itemExistente.setQuantidade(itemExistente.getQuantidade() + itemPedidoAdicionado.getQuantidade());
+            itens.set(indexItem, itemExistente);
+        }
     }
 
     public boolean removeItemPedido(ItemPedido itemPedidoRemovido) {
-        //substitua o true por uma condição
-        if (true) {
-            //TODO
-        } else {
+
+        try {
+            int indexItem = itens.indexOf(itemPedidoRemovido);
+            ItemPedido item = itens.get(indexItem);
+            item.setQuantidade(item.getQuantidade() - 1); // regra 5
+
+            //substitua o true por uma condição
+            if (!item.equals(0)) {
+                //TODO
+                itens.set(indexItem, item);
+            } else {
+                itens.remove(indexItem);
+            }
+            return true;
+
+        } catch (Exception e) {
             throw new IllegalArgumentException("Item nao existe no pedido.");
         }
-        return false;
     }
 
     @Override
