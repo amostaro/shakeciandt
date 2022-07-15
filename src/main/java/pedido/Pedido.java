@@ -42,31 +42,36 @@ public class Pedido{
         for (ItemPedido itemPedido : itens) {
             if (itemPedido.getShake().getTipoTamanho().equals(TipoTamanho.P)) {
                 double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.P.multiplicador);
-                if (adicionais != null) {
-                    for ( Adicional adicional : adicionais) {
-                        double valorAdicional = cardapio.buscarPreco((Ingrediente) itemPedido.getShake().getAdicionais());
+                if (itemPedido.getShake().getAdicionais().isEmpty()) {
+                    total = base;
+                } else {
+                    for ( Adicional adicional : itemPedido.getShake().getAdicionais()) {
+                        double valorAdicional = cardapio.buscarPreco(adicional);
                         total = base + valorAdicional;
                     }
                 }
-                total = base;
+
             } else if (itemPedido.getShake().getTipoTamanho().equals(TipoTamanho.M)) {
                 double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.M.multiplicador);
-                if (adicionais != null) {
-                    for ( Adicional adicional : adicionais) {
-                        double valorAdicional = cardapio.buscarPreco((Ingrediente) itemPedido.getShake().getAdicionais());
+                if (itemPedido.getShake().getAdicionais().isEmpty()) {
+                    total = base;
+                } else {
+                    for ( Adicional adicional : itemPedido.getShake().getAdicionais()) {
+                        double valorAdicional = cardapio.buscarPreco(adicional);
                         total = base + valorAdicional;
                     }
                 }
-                total = base;
+
             } else {
                 double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.G.multiplicador);
-                if (adicionais != null) {
-                    for ( Adicional adicional : adicionais) {
-                        double valorAdicional = cardapio.buscarPreco((Ingrediente) itemPedido.getShake().getAdicionais());
+                if (itemPedido.getShake().getAdicionais().isEmpty()) {
+                    total = base;
+                } else {
+                    for ( Adicional adicional : itemPedido.getShake().getAdicionais()) {
+                        double valorAdicional = cardapio.buscarPreco(adicional);
                         total = base + valorAdicional;
                     }
                 }
-                total = base;
             }
         }
         return total;
