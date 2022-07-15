@@ -50,7 +50,6 @@ public class Pedido{
                         total = base + valorAdicional;
                     }
                 }
-
             } else if (itemPedido.getShake().getTipoTamanho().equals(TipoTamanho.M)) {
                 double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.M.multiplicador);
                 if (itemPedido.getShake().getAdicionais().isEmpty()) {
@@ -61,7 +60,6 @@ public class Pedido{
                         total = base + valorAdicional;
                     }
                 }
-
             } else {
                 double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.G.multiplicador);
                 if (itemPedido.getShake().getAdicionais().isEmpty()) {
