@@ -1,6 +1,12 @@
 package pedido;
 
+import ingredientes.Adicional;
+import ingredientes.Ingrediente;
+import produto.Shake;
+import produto.TipoTamanho;
+
 import java.util.ArrayList;
+import java.util.Set;
 
 public class Pedido{
 
@@ -8,6 +14,8 @@ public class Pedido{
     private int id;
     private  ArrayList<ItemPedido> itens;
     private Cliente cliente;
+    private Set<Adicional> adicionais;
+    private Shake shake;
 
     /** MÉTODOS */
     public Pedido(int id, ArrayList<ItemPedido> itens,Cliente cliente){
@@ -28,13 +36,43 @@ public class Pedido{
         return this.cliente;
     }
 
-    public double calcularTotal(Cardapio cardapio){
+    public double calcularTotal(Cardapio cardapio) throws Exception{
         double total= 0;
         //TODO
+        for (ItemPedido itemPedido : itens) {
+            if (itemPedido.getShake().getTipoTamanho().equals(TipoTamanho.P)) {
+                double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.P.multiplicador);
+                if (adicionais != null) {
+                    for ( Adicional adicional : adicionais) {
+                        double valorAdicional = cardapio.buscarPreco((Ingrediente) itemPedido.getShake().getAdicionais());
+                        total = base + valorAdicional;
+                    }
+                }
+                total = base;
+            } else if (itemPedido.getShake().getTipoTamanho().equals(TipoTamanho.M)) {
+                double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.M.multiplicador);
+                if (adicionais != null) {
+                    for ( Adicional adicional : adicionais) {
+                        double valorAdicional = cardapio.buscarPreco((Ingrediente) itemPedido.getShake().getAdicionais());
+                        total = base + valorAdicional;
+                    }
+                }
+                total = base;
+            } else {
+                double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.G.multiplicador);
+                if (adicionais != null) {
+                    for ( Adicional adicional : adicionais) {
+                        double valorAdicional = cardapio.buscarPreco((Ingrediente) itemPedido.getShake().getAdicionais());
+                        total = base + valorAdicional;
+                    }
+                }
+                total = base;
+            }
+        }
         return total;
     }
 
-    public void adicionarItemPedido(ItemPedido itemPedidoAdicionado){
+    public void adicionarItemPedido(ItemPedido itemPedidoAdicionado) throws Exception {
         //TODO
         //precisa index pq ItemPedido é ArrayList
         int indexItem = itens.indexOf(itemPedidoAdicionado);
@@ -48,7 +86,7 @@ public class Pedido{
         }
     }
 
-    public boolean removeItemPedido(ItemPedido itemPedidoRemovido) {
+    public boolean removeItemPedido(ItemPedido itemPedidoRemovido) throws Exception {
 
         try {
             int indexItem = itens.indexOf(itemPedidoRemovido);
