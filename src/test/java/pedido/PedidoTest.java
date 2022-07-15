@@ -60,8 +60,8 @@ public class PedidoTest{
             assertEquals(new Fruta(TipoFruta.Morango), item.getShake().getFruta());
             assertEquals(new Topping(TipoTopping.Mel), item.getShake().getTopping());
             assertEquals(2, item.getShake().getAdicionais().size());
-            assertEquals(new Topping(TipoTopping.Aveia), item.getShake().getAdicionais().get(0));
-            assertEquals(new Fruta(TipoFruta.Banana), item.getShake().getAdicionais().get(1));
+            assertEquals(new Topping(TipoTopping.Aveia), item.getShake().getAdicionais());
+            assertEquals(new Fruta(TipoFruta.Banana), item.getShake().getAdicionais());
             assertEquals(TipoTamanho.P, item.getShake().getTipoTamanho());
             assertEquals(1, item.getQuantidade());
         });

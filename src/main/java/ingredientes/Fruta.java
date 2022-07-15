@@ -15,7 +15,7 @@ public class Fruta  implements Adicional,Comparable<Ingrediente>{
      }
 
      @Override
-     public Enum obterTipo() {
+     public TipoFruta obterTipo() {
           return this.tipoFruta;
      }
 
@@ -37,7 +37,8 @@ public class Fruta  implements Adicional,Comparable<Ingrediente>{
      //É necessário consertar o compareTo, para imprimir na ordem correta.
      @Override
      public int compareTo(Ingrediente ingrediente) {
-          return ingrediente.obterTipo().toString().compareToIgnoreCase(this.obterTipo().toString());
+//          return ingrediente.obterTipo().toString().compareToIgnoreCase(this.obterTipo().toString());
+          return this.obterTipo().toString().compareToIgnoreCase(ingrediente.obterTipo().toString());
      }
 
      @Override

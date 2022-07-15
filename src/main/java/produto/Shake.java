@@ -5,8 +5,7 @@ import ingredientes.Base;
 import ingredientes.Fruta;
 import ingredientes.Topping;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Shake {
 
@@ -14,15 +13,16 @@ public class Shake {
     private Base base;
     private Fruta fruta;
     private Topping topping;
-    private List<Adicional> adicionais;
+    private Set<Adicional> adicionais;
     private TipoTamanho  tipoTamanho;
 
     /** MÉTODOS */
-    public Shake(Base base, Fruta fruta, Topping topping, List<Adicional> adicionais, TipoTamanho tipoTamanho) {
+    public Shake(Base base, Fruta fruta, Topping topping, Collection<Adicional> adicionais, TipoTamanho tipoTamanho) {
         this.base = base;
         this.fruta = fruta;
         this.topping = topping;
-        this.adicionais = adicionais;
+//        this.adicionais = new List<>(adicionais);
+        this.adicionais = new HashSet<>(adicionais);
         this.tipoTamanho = tipoTamanho;
     }
 
@@ -31,6 +31,7 @@ public class Shake {
         this.fruta = fruta;
         this.topping = topping;
         this.tipoTamanho = tipoTamanho;
+        this.adicionais = Collections.emptySet();
     }
 
     public Base getBase() {
@@ -45,7 +46,7 @@ public class Shake {
         return topping;
     }
 
-    public List<Adicional> getAdicionais() {
+    public Set<Adicional> getAdicionais() {
         return adicionais;
     }
 
