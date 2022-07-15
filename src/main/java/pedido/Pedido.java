@@ -38,39 +38,46 @@ public class Pedido{
 
     public double calcularTotal(Cardapio cardapio) throws Exception{
         double total= 0;
+        double total1= 0;
+        double total2= 0;
+        double total3= 0;
+        double total4= 0;
+        double total5= 0;
+        double total6= 0;
         //TODO
         for (ItemPedido itemPedido : itens) {
             if (itemPedido.getShake().getTipoTamanho().equals(TipoTamanho.P)) {
                 double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.P.multiplicador);
                 if (itemPedido.getShake().getAdicionais().isEmpty()) {
-                    total = base * itemPedido.getQuantidade();
+                    total1 = base * itemPedido.getQuantidade();
                 } else {
                     for ( Adicional adicional : itemPedido.getShake().getAdicionais()) {
                         double valorAdicional = cardapio.buscarPreco(adicional);
-                        total = (base + valorAdicional)* itemPedido.getQuantidade();
+                        total2 = (base + valorAdicional)* itemPedido.getQuantidade();
                     }
                 }
             } else if (itemPedido.getShake().getTipoTamanho().equals(TipoTamanho.M)) {
                 double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.M.multiplicador);
                 if (itemPedido.getShake().getAdicionais().isEmpty()) {
-                    total = base * itemPedido.getQuantidade();
+                    total3 = base * itemPedido.getQuantidade();
                 } else {
                     for ( Adicional adicional : itemPedido.getShake().getAdicionais()) {
                         double valorAdicional = cardapio.buscarPreco(adicional);
-                        total = (base + valorAdicional)* itemPedido.getQuantidade();
+                        total4 = (base + valorAdicional)* itemPedido.getQuantidade();
                     }
                 }
             } else {
                 double base = (cardapio.buscarPreco(itemPedido.getShake().getBase()))*(TipoTamanho.G.multiplicador);
                 if (itemPedido.getShake().getAdicionais().isEmpty()) {
-                    total = base * itemPedido.getQuantidade();
+                    total5 = base * itemPedido.getQuantidade();
                 } else {
                     for ( Adicional adicional : itemPedido.getShake().getAdicionais()) {
                         double valorAdicional = cardapio.buscarPreco(adicional);
-                        total = (base + valorAdicional)* itemPedido.getQuantidade();
+                        total6 = (base + valorAdicional)* itemPedido.getQuantidade();
                     }
                 }
             }
+            total = total1 + total2 + total3 + total4 + total5 + total6;
         }
         return total;
     }
