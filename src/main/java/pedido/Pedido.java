@@ -52,6 +52,9 @@ public class Pedido{
                     total1 = base * itemPedido.getQuantidade();
                 } else {
                     for ( Adicional adicional : itemPedido.getShake().getAdicionais()) {
+
+//                        double valorAdicional1 = cardapio.buscarPreco(adicional);
+//                        double valorAdicional2 = cardapio.buscarPreco(adicional);
                         double valorAdicional = cardapio.buscarPreco(adicional);
                         total2 = (base + valorAdicional)* itemPedido.getQuantidade();
                     }
@@ -101,10 +104,13 @@ public class Pedido{
         try {
             int indexItem = itens.indexOf(itemPedidoRemovido);
             ItemPedido item = itens.get(indexItem);
-            item.setQuantidade(item.getQuantidade() - 1); // regra 5
+//            item.setQuantidade(item.getQuantidade() - 1); // regra 5
+
+            int qtd = item.getQuantidade() -1;
+            item.setQuantidade(qtd);
 
             //substitua o true por uma condição
-            if (!item.equals(0)) {
+            if (qtd > 0) {
                 //TODO
                 itens.set(indexItem, item);
             } else {
