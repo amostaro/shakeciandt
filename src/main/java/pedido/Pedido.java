@@ -1,9 +1,7 @@
 package pedido;
 
 import ingredientes.Adicional;
-import ingredientes.Ingrediente;
 import produto.Shake;
-import produto.TipoTamanho;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -14,8 +12,6 @@ public class Pedido{
     private int id;
     private  ArrayList<ItemPedido> itens;
     private Cliente cliente;
-    private Set<Adicional> adicionais;
-    private Shake shake;
 
     /** MÉTODOS */
     public Pedido(int id, ArrayList<ItemPedido> itens,Cliente cliente){

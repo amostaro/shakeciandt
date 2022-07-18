@@ -19,27 +19,36 @@ public class Cardapio {
     }
 
     public void adicionarIngrediente(Ingrediente ingrediente,Double preco) throws Exception {
-        //TODO
+        //TODO - regra 1 cardápio
+        if (preco <= 0) {
+            throw new IllegalArgumentException("Preco inválido");
+        }
         precos.put(ingrediente, preco);
     }
 
     public boolean atualizarIngrediente(Ingrediente ingrediente,Double preco) throws Exception {
-       //TODO
+       //TODO - regra 2 cardápio
+        if (ingrediente == null) {
+            throw new IllegalArgumentException("Ingrediente nao existe no cardapio.");
+        }
         return precos.replace(ingrediente, buscarPreco(ingrediente), preco);
     }
 
     public boolean removerIngrediente(Ingrediente ingrediente) throws Exception {
-       //TODO
+        //TODO - regra 2 cardápio
+        if (ingrediente == null) {
+            throw new IllegalArgumentException("Ingrediente nao existe no cardapio.");
+        }
         return precos.remove(ingrediente, buscarPreco(ingrediente));
     }
 
     public Double buscarPreco(Ingrediente ingrediente) throws Exception {
-        //TODO
+        //TODO - regra 2 cardápio
         Double preco = precos.get(ingrediente);
-        if (preco != null) {
-            return preco;
+        if (ingrediente == null) {
+            throw new IllegalArgumentException("Ingrediente nao existe no cardapio.");
         }
-        throw new Exception("Preço deve ser diferente de nulo.");
+        return preco;
     }
 
     @Override
