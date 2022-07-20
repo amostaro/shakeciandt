@@ -20,7 +20,7 @@ public class CardapioTest {
     }
 
     @Test
-    void test_adicionar_ingredientes_properly(){
+    void test_adicionar_ingredientes_properly() throws Exception {
         int contator = 0;
         Base base = new Base(TipoBase.Iorgute);
         Fruta fruta = new Fruta(TipoFruta.Morango);
@@ -50,7 +50,7 @@ public class CardapioTest {
     }
 
     @Test
-    void test_adicionar_ingredientes_exception_precoInvalido(){
+    void test_adicionar_ingredientes_exception_precoInvalido() throws Exception {
         Base base = new Base(TipoBase.Iorgute);
         Fruta fruta = new Fruta(TipoFruta.Morango);
 
@@ -72,7 +72,7 @@ public class CardapioTest {
     }
 
     @Test
-    void test_atualizar_ingredientes_properly(){
+    void test_atualizar_ingredientes_properly() throws Exception {
         Base base = new Base(TipoBase.Iorgute);
         Fruta fruta = new Fruta(TipoFruta.Morango);
         Topping topping = new Topping(TipoTopping.Mel);
@@ -90,7 +90,7 @@ public class CardapioTest {
     }
 
     @Test
-    void test_atualizar_ingredientes_exception_precoInvalido(){
+    void test_atualizar_ingredientes_exception_precoInvalido() throws Exception {
         Base base = new Base(TipoBase.Iorgute);
         Fruta fruta = new Fruta(TipoFruta.Morango);
 
@@ -115,7 +115,7 @@ public class CardapioTest {
     }
 
     @Test
-    void test_atualizar_ingredientes_exception_ingredienteInexistente(){
+    void test_atualizar_ingredientes_exception_ingredienteInexistente() throws Exception {
         Base base = new Base(TipoBase.Iorgute);
         Fruta fruta = new Fruta(TipoFruta.Morango);
         Topping topping = new Topping(TipoTopping.Aveia);
@@ -134,7 +134,7 @@ public class CardapioTest {
     }
 
     @Test
-    void test_remover_ingredientes_properly(){
+    void test_remover_ingredientes_properly() throws Exception {
         int contator = 0;
         Base base = new Base(TipoBase.Iorgute);
         Fruta fruta = new Fruta(TipoFruta.Morango);
@@ -162,7 +162,7 @@ public class CardapioTest {
     }
 
     @Test
-    void test_remover_ingredientes_exception_ingredienteInexistente(){
+    void test_remover_ingredientes_exception_ingredienteInexistente() throws Exception {
         Base base = new Base(TipoBase.Iorgute);
 
         cardapio.adicionarIngrediente(base, 1.0);
@@ -177,7 +177,7 @@ public class CardapioTest {
     }
 
     @Test
-    void test_buscar_ingrediente_properly(){
+    void test_buscar_ingrediente_properly() throws Exception {
         Base base = new Base(TipoBase.Iorgute);
 
         cardapio.adicionarIngrediente(base, 1.0);
@@ -186,7 +186,7 @@ public class CardapioTest {
     }
 
     @Test
-    void test_buscar_ingrediente_exception_ingredienteInexistente(){
+    void test_buscar_ingrediente_exception_ingredienteInexistente() throws Exception {
         Base base = new Base(TipoBase.Iorgute);
 
         cardapio.adicionarIngrediente(base, 1.0);

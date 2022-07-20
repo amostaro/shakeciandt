@@ -1,16 +1,38 @@
 package produto;
 
-import ingredientes.*;
+import ingredientes.Adicional;
+import ingredientes.Base;
+import ingredientes.Fruta;
+import ingredientes.Topping;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Shake {
+
+    /** ATRIBUTOS */
     private Base base;
     private Fruta fruta;
     private Topping topping;
-    private List<Adicional> adicionais;
+    private Set<Adicional> adicionais;
     private TipoTamanho  tipoTamanho;
+
+    /** MÉTODOS */
+    public Shake(Base base, Fruta fruta, Topping topping, Collection<Adicional> adicionais, TipoTamanho tipoTamanho) {
+        this.base = base;
+        this.fruta = fruta;
+        this.topping = topping;
+//        this.adicionais = new List<>(adicionais);
+        this.adicionais = new HashSet<>(adicionais);
+        this.tipoTamanho = tipoTamanho;
+    }
+
+    public Shake(Base base, Fruta fruta, Topping topping, TipoTamanho tipoTamanho) {
+        this.base = base;
+        this.fruta = fruta;
+        this.topping = topping;
+        this.tipoTamanho = tipoTamanho;
+        this.adicionais = Collections.emptySet();
+    }
 
     public Base getBase() {
         return base;
@@ -24,12 +46,25 @@ public class Shake {
         return topping;
     }
 
-    public List<Adicional> getAdicionais() {
+    public Set<Adicional> getAdicionais() {
         return adicionais;
     }
 
     public TipoTamanho getTipoTamanho() {
         return tipoTamanho;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Shake shake = (Shake) o;
+        return Objects.equals(base, shake.base) && Objects.equals(fruta, shake.fruta) && Objects.equals(topping, shake.topping) && Objects.equals(adicionais, shake.adicionais) && tipoTamanho == shake.tipoTamanho;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(base, fruta, topping, adicionais, tipoTamanho);
     }
 
     @Override

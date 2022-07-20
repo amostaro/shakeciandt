@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Program {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Cliente cliente = new Cliente(1,"Pedro","pedro@email.com");
         Cardapio cardapio = new Cardapio();
 

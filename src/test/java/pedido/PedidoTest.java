@@ -21,7 +21,7 @@ public class PedidoTest{
     Cardapio cardapio;
 
     @BeforeAll
-    void setup(){
+    void setup() throws Exception {
         cardapio = new Cardapio();
         cardapio.adicionarIngrediente(new Base(TipoBase.Iorgute), 10.0);
         cardapio.adicionarIngrediente(new Base(TipoBase.Sorvete), 5.0);
@@ -33,7 +33,7 @@ public class PedidoTest{
     }
 
     @BeforeEach
-    void resetPedido(){
+    void resetPedido() throws Exception {
         pedido = new Pedido(1, new ArrayList<>(), new Cliente(
                 1,
                 "Cliente Test",
@@ -42,7 +42,7 @@ public class PedidoTest{
     }
 
     @Test
-    void test_adicionarItemPedido_properly(){
+    void test_adicionarItemPedido_properly() throws Exception {
         Shake shake = new Shake(new Base(TipoBase.Sorvete),
                 new Fruta(TipoFruta.Morango),
                 new Topping(TipoTopping.Mel),
@@ -60,15 +60,15 @@ public class PedidoTest{
             assertEquals(new Fruta(TipoFruta.Morango), item.getShake().getFruta());
             assertEquals(new Topping(TipoTopping.Mel), item.getShake().getTopping());
             assertEquals(2, item.getShake().getAdicionais().size());
-            assertEquals(new Topping(TipoTopping.Aveia), item.getShake().getAdicionais().get(0));
-            assertEquals(new Fruta(TipoFruta.Banana), item.getShake().getAdicionais().get(1));
+            assertEquals(new Topping(TipoTopping.Aveia), item.getShake().getAdicionais());
+            assertEquals(new Fruta(TipoFruta.Banana), item.getShake().getAdicionais());
             assertEquals(TipoTamanho.P, item.getShake().getTipoTamanho());
             assertEquals(1, item.getQuantidade());
         });
     }
 
     @Test
-    void test_adicionarItemPedido_itemPedidoDuplicado(){
+    void test_adicionarItemPedido_itemPedidoDuplicado() throws Exception {
         Shake shake = new Shake(new Base(TipoBase.Sorvete),
                 new Fruta(TipoFruta.Morango),
                 new Topping(TipoTopping.Mel),
@@ -93,7 +93,7 @@ public class PedidoTest{
     }
 
     @Test
-    void test_adicionarItemPedido_itemPedidoDiferentes(){
+    void test_adicionarItemPedido_itemPedidoDiferentes() throws Exception {
         Shake shake = new Shake(new Base(TipoBase.Sorvete),
                 new Fruta(TipoFruta.Morango),
                 new Topping(TipoTopping.Mel),
@@ -120,7 +120,7 @@ public class PedidoTest{
     }
 
     @Test
-    void test_removerItemPedido_properly(){
+    void test_removerItemPedido_properly() throws Exception {
         Shake shake = new Shake(new Base(TipoBase.Sorvete),
                 new Fruta(TipoFruta.Morango),
                 new Topping(TipoTopping.Mel),
@@ -137,7 +137,7 @@ public class PedidoTest{
     }
 
     @Test
-    void test_removerItemPedido_quantidadeMaiorQue1(){
+    void test_removerItemPedido_quantidadeMaiorQue1() throws Exception {
         Shake shake = new Shake(new Base(TipoBase.Sorvete),
                 new Fruta(TipoFruta.Morango),
                 new Topping(TipoTopping.Mel),
@@ -163,7 +163,7 @@ public class PedidoTest{
     }
 
     @Test
-    void test_removerItemPedido_quantidadeIgualA1(){
+    void test_removerItemPedido_quantidadeIgualA1() throws Exception {
         Shake shake = new Shake(new Base(TipoBase.Sorvete),
                 new Fruta(TipoFruta.Morango),
                 new Topping(TipoTopping.Mel),
@@ -188,7 +188,7 @@ public class PedidoTest{
     }
 
     @Test
-    void test_removerItemPedido_exception_itemNaoExiste(){
+    void test_removerItemPedido_exception_itemNaoExiste() throws Exception {
         Shake shake = new Shake(new Base(TipoBase.Sorvete),
                 new Fruta(TipoFruta.Morango),
                 new Topping(TipoTopping.Mel),
@@ -218,7 +218,7 @@ public class PedidoTest{
     }
 
     @Test
-    void test_calcularPedido_comAdicional_properly(){
+    void test_calcularPedido_comAdicional_properly() throws Exception {
         Shake shake1 = new Shake(new Base(TipoBase.Iorgute),
                 new Fruta(TipoFruta.Banana),
                 new Topping(TipoTopping.Aveia),
@@ -241,7 +241,7 @@ public class PedidoTest{
     }
 
     @Test
-    void test_calcularPedido_semAdicional_properly(){
+    void test_calcularPedido_semAdicional_properly() throws Exception {
         Shake shake1 = new Shake(new Base(TipoBase.Iorgute),
                 new Fruta(TipoFruta.Banana),
                 new Topping(TipoTopping.Aveia),
